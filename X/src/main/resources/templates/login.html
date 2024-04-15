@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Beauty Salon</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url("https://images.unsplash.com/photo-1595475884562-073c30d45670?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Roboto', sans-serif;
+      color: #ffffff;
+    }
+
+    .login-container {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      width: 400px;
+      text-align: center;
+    }
+
+    .login-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-control {
+      margin-bottom: 20px;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .btn-login {
+      background-color: #00bcd4;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .btn-login:hover {
+      background-color: #008ba3;
+    }
+
+    .register-link {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+<div class="login-container">
+  <h2 class="login-title">Вітаємо в салоні краси</h2>
+  <form th:action="@{/login}" method="post" th:object="${client}">
+    <input type="text" class="form-control" th:field="*{username}" placeholder="Username" required>
+    <input type="password" class="form-control" th:field="*{password}" placeholder="Password" required>
+    <button type="submit" class="btn btn-login">Вхід</button>
+  </form>
+
+  <p th:if="${error}" style="color: red;">Неправильний нікнейм або пароль. Попробуйте ще</p>
+  <p class="mt-3">Not registered yet? <a th:href="@{/register}" class="register-link">Реєстрація</a></p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

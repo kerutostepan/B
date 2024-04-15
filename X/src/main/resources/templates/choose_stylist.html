@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose a Stylist - Beauty Salon</title>
+</head>
+<body>
+<div class="stylists-container">
+  <h2 class="stylists-title">Choose a Stylist</h2>
+  <ul>
+    <li class="stylist-item" th:each="stylist : ${stylists}">
+      <form th:action="@{/choose-date}" method="post">
+        <input type="hidden" name="stylistId" th:value="${stylist.id}">
+        <label class="stylist-label" th:text="${stylist.name}"></label><br>
+        <button type="submit" class="date-link">Choose Date</button>
+      </form>
+    </li>
+  </ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
